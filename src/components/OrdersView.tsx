@@ -194,12 +194,23 @@ export const OrdersView: React.FC<OrdersViewProps> = ({
 
       {/* Orders List / Cards */}
       {sortedOrders.length === 0 ? (
-        <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-slate-300">
-          <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-slate-700">Nenhum agendamento encontrado</h3>
-          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-            Ajuste os filtros de pesquisa ou clique no botão acima para agendar um novo serviço.
-          </p>
+        <div className="text-center py-14 bg-white rounded-2xl border border-dashed border-slate-300 space-y-4">
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-cyan-50 border border-cyan-200 text-cyan-600 flex items-center justify-center">
+            <Calendar className="w-7 h-7" />
+          </div>
+          <div>
+            <h3 className="text-base font-extrabold text-slate-800">Nenhum agendamento ativo</h3>
+            <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+              Cadastre seu primeiro serviço para organizar sua rota diária e calcular seus lucros automaticamente.
+            </p>
+          </div>
+          <button
+            onClick={onNewOrder}
+            className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs sm:text-sm rounded-xl inline-flex items-center gap-2 shadow-md shadow-cyan-600/20 transition transform active:scale-95"
+          >
+            <Plus className="w-4 h-4" />
+            Novo Agendamento
+          </button>
         </div>
       ) : (
         <div className="space-y-3.5">

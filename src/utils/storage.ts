@@ -1,9 +1,18 @@
 import { INITIAL_CLIENTS, INITIAL_EXPENSES, INITIAL_ORDERS } from '../data/mockData';
 import { Client, Expense, Order } from '../types';
 
-const CLIENTS_STORAGE_KEY = 'expresscleanmcz_clients_v1';
-const ORDERS_STORAGE_KEY = 'expresscleanmcz_orders_v1';
-const EXPENSES_STORAGE_KEY = 'expresscleanmcz_expenses_v1';
+const CLIENTS_STORAGE_KEY = 'expresscleanmcz_clients_v2';
+const ORDERS_STORAGE_KEY = 'expresscleanmcz_orders_v2';
+const EXPENSES_STORAGE_KEY = 'expresscleanmcz_expenses_v2';
+
+// Clean old mock keys from v1 if present
+try {
+  localStorage.removeItem('expresscleanmcz_clients_v1');
+  localStorage.removeItem('expresscleanmcz_orders_v1');
+  localStorage.removeItem('expresscleanmcz_expenses_v1');
+} catch (e) {
+  // ignore
+}
 
 export function getStoredClients(): Client[] {
   try {
@@ -71,6 +80,14 @@ export function saveStoredExpenses(expenses: Expense[]): void {
   }
 }
 
+export function clearAllClients(): void {
+  try {
+    localStorage.setItem(CLIENTS_STORAGE_KEY, JSON.stringify([]));
+  } catch (err) {
+    console.error('Error clearing clients', err);
+  }
+}
+
 export function exportAllDataAsJSON(clients: Client[], orders: Order[], expenses: Expense[]): void {
   const data = {
     appName: 'ExpressCleanmcz',
@@ -128,7 +145,6 @@ export function formatDateBR(dateStr: string): string {
 }
 
 export function formatPhoneWhatsApp(phone: string): string {
-  // Limpa caracteres não numéricos
   const clean = phone.replace(/\D/g, '');
   if (clean.length === 11) {
     return `(${clean.slice(0, 2)}) ${clean.slice(2, 7)}-${clean.slice(7)}`;
