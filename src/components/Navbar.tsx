@@ -8,12 +8,15 @@ import {
   BarChart3, 
   PlusCircle, 
   Download,
+  Instagram,
+  ExternalLink,
+  Droplets
 } from 'lucide-react';
 import { formatCurrencyBRL } from '../utils/storage';
 
 interface NavbarProps {
-  currentTab: 'orders' | 'clients' | 'financial' | 'map' | 'dashboard';
-  setCurrentTab: (tab: 'orders' | 'clients' | 'financial' | 'map' | 'dashboard') => void;
+  currentTab: 'orders' | 'clients' | 'financial' | 'map' | 'dashboard' | 'instagram';
+  setCurrentTab: (tab: 'orders' | 'clients' | 'financial' | 'map' | 'dashboard' | 'instagram') => void;
   onNewOrder: () => void;
   onNewExpense: () => void;
   onExportBackup: () => void;
@@ -62,25 +65,44 @@ export const Navbar: React.FC<NavbarProps> = ({
       label: 'Painel de Gráficos',
       icon: BarChart3,
     },
+    {
+      id: 'instagram' as const,
+      label: 'Estúdio Instagram',
+      icon: Instagram,
+      badge: '@expresscleanmcz',
+      badgeColor: 'text-purple-700 bg-purple-50 border-purple-200',
+    },
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Header: Brand & Key Financial Ticker */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between py-3.5 gap-3 border-b border-slate-100">
-          {/* Logo & Slogan (without Maceió badge) */}
+          {/* Logo & Slogan */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center shadow-md shadow-cyan-600/20 text-white font-bold ring-2 ring-cyan-500/20">
-                <Sparkles className="w-5 h-5" />
+              <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-600 via-cyan-600 to-blue-700 flex items-center justify-center shadow-md shadow-cyan-600/25 text-white ring-2 ring-cyan-500/20">
+                <Droplets className="w-6 h-6" />
               </div>
               <div>
-                <h1 className="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1.5">
-                  ExpressClean<span className="text-cyan-600">mcz</span>
-                </h1>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-xl font-black tracking-tight text-slate-900">
+                    ExpressClean<span className="text-cyan-600">mcz</span>
+                  </h1>
+                  <a
+                    href="https://www.instagram.com/expresscleanmcz/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-slate-600 hover:text-purple-700 bg-slate-100 hover:bg-purple-50 border border-slate-200 hover:border-purple-200 px-2 py-0.5 rounded-full transition"
+                    title="Acessar o perfil oficial no Instagram"
+                  >
+                    <Instagram className="w-3 h-3 text-rose-500" />
+                    @expresscleanmcz
+                  </a>
+                </div>
                 <p className="text-xs text-slate-500 font-medium">
-                  Higienização & Impermeabilização de Estofados
+                  Rápido e Limpo • Higienização & Estofados
                 </p>
               </div>
             </div>
@@ -89,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center gap-2 md:hidden">
               <button
                 onClick={onNewOrder}
-                className="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs rounded-lg flex items-center gap-1 shadow-sm transition"
+                className="px-3 py-1.5 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold text-xs rounded-lg flex items-center gap-1 shadow-sm transition"
               >
                 <PlusCircle className="w-3.5 h-3.5" />
                 Pedido
@@ -158,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => setCurrentTab(tab.id)}
                   className={`flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-bold rounded-lg whitespace-nowrap transition-all duration-150 ${
                     isActive
-                      ? 'bg-white text-cyan-700 shadow-sm border border-slate-200/90 font-extrabold'
+                      ? 'bg-white text-cyan-800 shadow-xs border border-slate-200 font-extrabold'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
                 >

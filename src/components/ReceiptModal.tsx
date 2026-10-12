@@ -55,9 +55,10 @@ ${order.discount > 0 ? `🎁 *Desconto Especial:* - ${formatCurrencyBRL(order.di
 🛡️ *CUIDADOS E PÓS-LIMPEZA:*
 - Tempo médio de secagem: 6 a 12 horas em local arejado.
 - Mantenha janelas abertas para circulação de ar natural.
-- Higienização profissional com eliminação de ácaros, bactérias e odores!
+- Higienização profissional com eliminação profunda de ácaros, bactérias e odores!
 
-Obrigado pela preferência na *ExpressCleanmcz*! 🌊🧼`;
+📸 Acompanhe nossos resultados de Antes & Depois no Instagram: @expresscleanmcz
+Obrigado pela preferência na *ExpressCleanmcz* — Rápido e Limpo! 🌊🧼`;
   };
 
   const handleCopy = () => {
@@ -141,11 +142,11 @@ Obrigado pela preferência na *ExpressCleanmcz*! 🌊🧼`;
                   ExpressClean<span className="text-cyan-600">mcz</span>
                 </h2>
               </div>
-              <p className="text-xs text-slate-500 mt-1 font-medium">
-                Higienização & Impermeabilização de Estofados
+              <p className="text-xs text-slate-600 mt-1 font-semibold">
+                Rápido e Limpo • Higienização & Impermeabilização de Estofados
               </p>
-              <p className="text-[11px] text-slate-400">
-                Atendimento em Domicílio
+              <p className="text-[11px] text-slate-500 font-medium">
+                Atendimento em Domicílio • Instagram: @expresscleanmcz
               </p>
             </div>
 

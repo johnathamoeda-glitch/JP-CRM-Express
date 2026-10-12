@@ -10,6 +10,7 @@ import { ClientsView } from './components/ClientsView';
 import { FinancialView } from './components/FinancialView';
 import { MapView } from './components/MapView';
 import { DashboardView } from './components/DashboardView';
+import { InstagramStudioView } from './components/InstagramStudioView';
 import { OrderModal } from './components/OrderModal';
 import { ClientModal } from './components/ClientModal';
 import { ExpenseModal } from './components/ExpenseModal';
@@ -26,7 +27,7 @@ import {
 } from './utils/storage';
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<'orders' | 'clients' | 'financial' | 'map' | 'dashboard'>('orders');
+  const [currentTab, setCurrentTab] = useState<'orders' | 'clients' | 'financial' | 'map' | 'dashboard' | 'instagram'>('orders');
 
   // Core Data
   const [clients, setClients] = useState<Client[]>([]);
@@ -298,6 +299,12 @@ export default function App() {
             expenses={expenses}
           />
         )}
+
+        {currentTab === 'instagram' && (
+          <InstagramStudioView
+            orders={orders}
+          />
+        )}
       </main>
 
       {/* Modals */}
@@ -348,8 +355,17 @@ export default function App() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500 font-medium">
-        <p>
-          ExpressCleanmcz • Gestão Especializada em Limpeza de Estofados
+        <p className="flex items-center justify-center gap-2 flex-wrap">
+          <span>ExpressCleanmcz • Rápido e Limpo • Higienização de Estofados</span>
+          <span className="text-slate-300">•</span>
+          <a
+            href="https://www.instagram.com/expresscleanmcz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-purple-700 hover:text-purple-800 font-bold hover:underline inline-flex items-center gap-1"
+          >
+            Siga @expresscleanmcz no Instagram
+          </a>
         </p>
       </footer>
     </div>
