@@ -1,0 +1,6 @@
+{
+  "name": "ExpressCleanmcz - Gerenciador de Pedidos & Financeiro",
+  "description": "Sistema completo para higienização de estofados em Maceió: CRM de clientes, agendamento de pedidos, controle de gastos e lucros automáticos, rotas e painel analítico.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
